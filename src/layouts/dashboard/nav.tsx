@@ -112,7 +112,7 @@ export function NavMobile({
 
 // ----------------------------------------------------------------------
 
-export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
+export function NavContent({ data, slots, sx }: NavContentProps) {
   const pathname = usePathname();
 
   return (
@@ -121,7 +121,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
 
       {slots?.topArea}
 
-      <WorkspacesPopover data={workspaces} sx={{ my: 2 }} />
+      {/* <WorkspacesPopover data={workspaces} sx={{ my: 2 }} /> */}
 
       <Scrollbar fillContent>
         <Box
@@ -130,7 +130,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
             {
               display: "flex",
               flex: "1 1 auto",
-              flexDirection: "column",
+              flexDirection: "row",
             },
             ...(Array.isArray(sx) ? sx : [sx]),
           ]}
@@ -140,7 +140,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
             sx={{
               gap: 0.5,
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "row",
             }}
           >
             {data.map((item) => {
@@ -199,7 +199,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
 
       {slots?.bottomArea}
 
-      <NavUpgrade />
+      {/* <NavUpgrade /> */}
     </>
   );
 }
