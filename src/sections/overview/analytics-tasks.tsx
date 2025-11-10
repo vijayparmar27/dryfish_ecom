@@ -1,24 +1,25 @@
 "use client";
-import type { BoxProps } from '@mui/material/Box';
-import type { CardProps } from '@mui/material/Card';
 
-import { useState } from 'react';
-import { usePopover } from 'minimal-shared/hooks';
+import type { BoxProps } from "@mui/material/Box";
+import type { CardProps } from "@mui/material/Card";
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Popover from '@mui/material/Popover';
-import Divider from '@mui/material/Divider';
-import MenuList from '@mui/material/MenuList';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import CardHeader from '@mui/material/CardHeader';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
+import { useState } from "react";
+import { usePopover } from "minimal-shared/hooks";
 
-import { Iconify } from '@/components/iconify';
-import { Scrollbar } from '@/components/scrollbar';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Popover from "@mui/material/Popover";
+import Divider from "@mui/material/Divider";
+import MenuList from "@mui/material/MenuList";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import CardHeader from "@mui/material/CardHeader";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import MenuItem, { menuItemClasses } from "@mui/material/MenuItem";
+
+import { Iconify } from "@/components/iconify";
+import { Scrollbar } from "@/components/scrollbar";
 
 // ----------------------------------------------------------------------
 
@@ -31,8 +32,14 @@ type Props = CardProps & {
   }[];
 };
 
-export function AnalyticsTasks({ title, subheader, list, sx, ...other }: Props) {
-  const [selected, setSelected] = useState(['2']);
+export function AnalyticsTasks({
+  title,
+  subheader,
+  list,
+  sx,
+  ...other
+}: Props) {
+  const [selected, setSelected] = useState(["2"]);
 
   const handleClickComplete = (taskId: string) => {
     const tasksCompleted = selected.includes(taskId)
@@ -47,7 +54,10 @@ export function AnalyticsTasks({ title, subheader, list, sx, ...other }: Props) 
       <CardHeader title={title} subheader={subheader} sx={{ mb: 1 }} />
 
       <Scrollbar sx={{ minHeight: 304 }}>
-        <Stack divider={<Divider sx={{ borderStyle: 'dashed' }} />} sx={{ minWidth: 560 }}>
+        <Stack
+          divider={<Divider sx={{ borderStyle: "dashed" }} />}
+          sx={{ minWidth: 560 }}
+        >
           {list.map((item) => (
             <TaskItem
               key={item.id}
@@ -66,7 +76,7 @@ export function AnalyticsTasks({ title, subheader, list, sx, ...other }: Props) 
 
 type TaskItemProps = BoxProps & {
   selected: boolean;
-  item: Props['list'][number];
+  item: Props["list"][number];
   onChange: (id: string) => void;
 };
 
@@ -75,22 +85,22 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
 
   const handleMarkComplete = () => {
     menuActions.onClose();
-    console.info('MARK COMPLETE', item.id);
+    console.info("MARK COMPLETE", item.id);
   };
 
   const handleShare = () => {
     menuActions.onClose();
-    console.info('SHARE', item.id);
+    console.info("SHARE", item.id);
   };
 
   const handleEdit = () => {
     menuActions.onClose();
-    console.info('EDIT', item.id);
+    console.info("EDIT", item.id);
   };
 
   const handleDelete = () => {
     menuActions.onClose();
-    console.info('DELETE', item.id);
+    console.info("DELETE", item.id);
   };
 
   return (
@@ -101,10 +111,10 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
             pl: 2,
             pr: 1,
             py: 1.5,
-            display: 'flex',
+            display: "flex",
             ...(selected && {
-              color: 'text.disabled',
-              textDecoration: 'line-through',
+              color: "text.disabled",
+              textDecoration: "line-through",
             }),
           }),
           ...(Array.isArray(sx) ? sx : [sx]),
@@ -124,7 +134,10 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
           sx={{ flexGrow: 1, m: 0 }}
         />
 
-        <IconButton color={menuActions.open ? 'inherit' : 'default'} onClick={menuActions.onOpen}>
+        <IconButton
+          color={menuActions.open ? "inherit" : "default"}
+          onClick={menuActions.onOpen}
+        >
           <Iconify icon="eva:more-vertical-fill" />
         </IconButton>
       </Box>
@@ -133,22 +146,22 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
         open={menuActions.open}
         anchorEl={menuActions.anchorEl}
         onClose={menuActions.onClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
         <MenuList
           disablePadding
           sx={{
             p: 0.5,
             gap: 0.5,
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             [`& .${menuItemClasses.root}`]: {
               pl: 1,
               pr: 2,
               gap: 2,
               borderRadius: 0.75,
-              [`&.${menuItemClasses.selected}`]: { bgcolor: 'action.selected' },
+              [`&.${menuItemClasses.selected}`]: { bgcolor: "action.selected" },
             },
           }}
         >
@@ -167,9 +180,9 @@ function TaskItem({ item, selected, onChange, sx, ...other }: TaskItemProps) {
             Share
           </MenuItem>
 
-          <Divider sx={{ borderStyle: 'dashed' }} />
+          <Divider sx={{ borderStyle: "dashed" }} />
 
-          <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
+          <MenuItem onClick={handleDelete} sx={{ color: "error.main" }}>
             <Iconify icon="solar:trash-bin-trash-bold" />
             Delete
           </MenuItem>

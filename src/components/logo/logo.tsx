@@ -1,14 +1,15 @@
-import type { LinkProps } from '@mui/material/Link';
+"use client";
+import type { LinkProps } from "@mui/material/Link";
 
-import { useId } from 'react';
-import { mergeClasses } from 'minimal-shared/utils';
+import { useId } from "react";
+import { mergeClasses } from "minimal-shared/utils";
 
-import Link from '@mui/material/Link';
-import { styled, useTheme } from '@mui/material/styles';
+import Link from "@mui/material/Link";
+import { styled, useTheme } from "@mui/material/styles";
 
-import { RouterLink } from '@/routes/components';
+import { RouterLink } from "@/routes/components";
 
-import { logoClasses } from './classes';
+import { logoClasses } from "./classes";
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +22,7 @@ export function Logo({
   sx,
   disabled,
   className,
-  href = '/',
+  href = "/",
   isSingle = true,
   ...other
 }: LogoProps) {
@@ -176,7 +177,7 @@ export function Logo({
           width: 40,
           height: 40,
           ...(!isSingle && { width: 102, height: 36 }),
-          ...(disabled && { pointerEvents: 'none' }),
+          ...(disabled && { pointerEvents: "none" }),
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
@@ -191,7 +192,7 @@ export function Logo({
 
 const LogoRoot = styled(Link)(() => ({
   flexShrink: 0,
-  color: 'transparent',
-  display: 'inline-flex',
-  verticalAlign: 'middle',
+  color: "transparent",
+  display: "inline-flex",
+  verticalAlign: "middle",
 }));
