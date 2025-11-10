@@ -1,4 +1,5 @@
 "use client";
+
 import type { IconProps } from "@iconify/react";
 
 import { useId } from "react";
@@ -16,17 +17,17 @@ import type { IconifyName } from "./register-icons";
 
 export type IconifyProps = React.ComponentProps<typeof IconRoot> &
   Omit<IconProps, "icon"> & {
-    icon: IconifyName;
+    icon: IconifyName | string;
   };
 
-export function Iconify({
+export const Iconify = ({
   className,
   icon,
   width = 20,
   height,
   sx,
   ...other
-}: IconifyProps) {
+}: IconifyProps) => {
   const id = useId();
 
   if (!allIconNames.includes(icon)) {
@@ -59,7 +60,7 @@ export function Iconify({
       {...other}
     />
   );
-}
+};
 
 // ----------------------------------------------------------------------
 
