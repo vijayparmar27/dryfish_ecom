@@ -210,3 +210,38 @@ export const _notifications = [
     isUnRead: false,
   },
 ];
+
+export const carouselItems = [
+  {
+    id: "1",
+    title: "The future is built on Artificial Intelligence",
+    description: "Transform your business with cutting-edge AI solutions",
+    image: "/futuristic-artificial-intelligence.jpg",
+    buttonText: "Learn More",
+    buttonLink: "https://www.example.com/ai",
+  },
+  {
+    id: "2",
+    title: "Modern Design, Timeless Experience",
+    description: "Create stunning interfaces that captivate your audience",
+    image: "/modern-minimalist-design.png",
+    buttonText: "Explore Design",
+    buttonLink: "https://www.example.com/design",
+  },
+  {
+    id: "3",
+    title: "Innovation Meets Simplicity",
+    description: "Build products that users love and teams scale",
+    image: "/tech-innovation-productivity.jpg",
+    buttonText: "Start Building",
+    buttonLink: "https://www.example.com/build",
+  },
+  {
+    id: "4",
+    title: "Connect, Collaborate, Create",
+    description: "Empower your team with seamless tools",
+    image: "/team-collaboration-workspace.png",
+    buttonText: "Join Us",
+    buttonLink: "https://www.example.com/join",
+  },
+];

@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import AppWelcome from "../app-welcome";
 import { SeoIllustration } from "@/assets/illustrations";
 import { _ecommerceNewProducts } from "@/_mock/_overview";
+import { Carousel } from "@/components/carousel/carousel";
+import { carouselItems } from "@/_mock";
 
 const HomeView = () => {
   return (
@@ -25,7 +27,17 @@ const HomeView = () => {
           />
         </Grid>
         <Grid size={{ xs: 12, md: 4 }}>
-          {/* <EcommerceNewProducts list={_ecommerceNewProducts} /> */}
+          {/* <div className="mx-auto max-w-6xl px-4 py-12"> */}
+          <Carousel
+            items={_ecommerceNewProducts.map((item) => ({
+              id: item.id,
+              title: item.name,
+              image: item.coverUrl,
+              description: "item.",
+            }))}
+            autoPlay
+            autoPlayInterval={5000}
+          />
         </Grid>
       </Grid>
     </DashboardContent>

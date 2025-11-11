@@ -1,4 +1,3 @@
-
 // ----------------------------------------------------------------------
 
 import { paths } from "@/routes/paths";
@@ -6,11 +5,25 @@ import { paths } from "@/routes/paths";
 export type ConfigValue = {
   appName: string;
   appVersion: string;
+  site: {
+    name: string;
+    serverUrl: string;
+    assetURL: string;
+    basePath: string;
+    version: string;
+  };
 };
 
 export const CONFIG: ConfigValue = {
-  appName: 'Minimal UI',
+  appName: "Minimal UI",
   appVersion: "1",
+  site: {
+    name: "Minimals",
+    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL ?? "",
+    assetURL: process.env.NEXT_PUBLIC_ASSET_URL ?? "",
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "",
+    version: "1.0.0",
+  },
 };
 
 // routes
@@ -33,7 +46,8 @@ export const FIREBASE_API = {
 
 export const AMPLIFY_API = {
   userPoolId: process.env.NEXT_PUBLIC_AWS_AMPLIFY_USER_POOL_ID,
-  userPoolWebClientId: process.env.NEXT_PUBLIC_AWS_AMPLIFY_USER_POOL_WEB_CLIENT_ID,
+  userPoolWebClientId:
+    process.env.NEXT_PUBLIC_AWS_AMPLIFY_USER_POOL_WEB_CLIENT_ID,
   region: process.env.NEXT_PUBLIC_AWS_AMPLIFY_REGION,
 };
 
