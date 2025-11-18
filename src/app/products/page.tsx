@@ -1,4 +1,4 @@
-import { ProductsView } from "@/sections/product/view";
+import { ProductsView } from "@/sections/products/view";
 import React from "react";
 
 const Products = () => {
