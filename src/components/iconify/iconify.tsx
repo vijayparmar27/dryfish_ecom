@@ -30,7 +30,7 @@ export const Iconify = ({
 }: IconifyProps) => {
   const id = useId();
 
-  if (!allIconNames.includes(icon)) {
+  if (!allIconNames.includes(icon as IconifyName)) {
     console.warn(
       [
         `Icon "${icon}" is currently loaded online, which may cause flickering effects.`,
