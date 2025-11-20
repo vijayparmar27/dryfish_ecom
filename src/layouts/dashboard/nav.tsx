@@ -17,8 +17,8 @@ import { RouterLink } from "@/routes/components";
 import { Logo } from "@/components/logo";
 import { Scrollbar } from "@/components/scrollbar";
 
-import { NavUpgrade } from "../components/nav-upgrade";
-import { WorkspacesPopover } from "../components/workspaces-popover";
+// import { NavUpgrade } from "../components/nav-upgrade";
+// import { WorkspacesPopover } from "../components/workspaces-popover";
 
 import type { NavItem } from "../nav-config-dashboard";
 import type { WorkspacesPopoverProps } from "../components/workspaces-popover";
@@ -67,7 +67,12 @@ export function NavDesktop({
         ...sx,
       }}
     >
-      <NavContent data={data} slots={slots} workspaces={workspaces} />
+      <NavContent
+        data={data}
+        slots={slots}
+        workspaces={workspaces}
+        sx={{ flexDirection: "column" }}
+      />
     </Box>
   );
 }
@@ -105,7 +110,12 @@ export function NavMobile({
         },
       }}
     >
-      <NavContent data={data} slots={slots} workspaces={workspaces} />
+      <NavContent
+        data={data}
+        slots={slots}
+        workspaces={workspaces}
+        sx={{ flexDirection: "column" }}
+      />
     </Drawer>
   );
 }
@@ -130,7 +140,7 @@ export function NavContent({ data, slots, sx }: NavContentProps) {
             {
               display: "flex",
               flex: "1 1 auto",
-              flexDirection: "row",
+              flexDirection: "column", // Default to column if not overridden, but usually overridden by parent passing sx
             },
             ...(Array.isArray(sx) ? sx : [sx]),
           ]}
@@ -140,7 +150,7 @@ export function NavContent({ data, slots, sx }: NavContentProps) {
             sx={{
               gap: 0.5,
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "inherit", // Inherit from parent nav
             }}
           >
             {data.map((item) => {

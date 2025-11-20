@@ -11,7 +11,7 @@ import { useTheme } from "@mui/material/styles";
 
 import { _langs, _notifications } from "@/_mock";
 
-import { NavMobile, NavDesktop, NavContent } from "./nav";
+import { NavMobile, NavDesktop } from "./nav";
 import { layoutClasses } from "../core/classes";
 import { _account } from "../nav-config-account";
 import { dashboardLayoutVars } from "./css-vars";
@@ -25,6 +25,7 @@ import { LayoutSection } from "../core/layout-section";
 import { AccountPopover } from "../components/account-popover";
 import { LanguagePopover } from "../components/language-popover";
 import { NotificationsPopover } from "../components/notifications-popover";
+import { Logo } from "@/components/logo";
 
 import type { MainSectionProps } from "../core/main-section";
 import type { HeaderSectionProps } from "../core/header-section";
@@ -84,13 +85,7 @@ export function DashboardLayout({
             workspaces={_workspaces}
           />
 
-          {/* <Logo /> */}
-
-          <NavContent
-            data={navData}
-            workspaces={_workspaces}
-            sx={{ flexGrow: 1, gap: 14, px: 2 }}
-          />
+          <Logo sx={{ display: { [layoutQuery]: "none" } }} />
         </>
       ),
       rightArea: (
@@ -131,6 +126,14 @@ export function DashboardLayout({
 
   const renderFooter = () => null;
 
+  const renderSidebar = () => (
+    <NavDesktop
+      data={navData}
+      layoutQuery={layoutQuery}
+      workspaces={_workspaces}
+    />
+  );
+
   const renderMain = () => (
     <MainSection {...slotProps?.main}>{children}</MainSection>
   );
@@ -144,7 +147,7 @@ export function DashboardLayout({
       /** **************************************
        * @Sidebar
        *************************************** */
-
+      sidebarSection={renderSidebar()}
       /** **************************************
        * @Footer
        *************************************** */
