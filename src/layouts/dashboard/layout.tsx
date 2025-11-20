@@ -11,7 +11,7 @@ import { useTheme } from "@mui/material/styles";
 
 import { _langs, _notifications } from "@/_mock";
 
-import { NavMobile, NavDesktop, NavContent } from "./nav";
+import { NavMobile, NavContent } from "./nav";
 import { layoutClasses } from "../core/classes";
 import { _account } from "../nav-config-account";
 import { dashboardLayoutVars } from "./css-vars";
