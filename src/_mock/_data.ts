@@ -95,6 +95,10 @@ export const _products = [...Array(24)].map((_, index) => {
       ([1, 3, 5].includes(setIndex) && "sale") ||
       ([4, 8, 12].includes(setIndex) && "new") ||
       "",
+    category:
+      (setIndex % 3 === 0 && "shose") ||
+      (setIndex % 3 === 1 && "apparel") ||
+      "accessories",
   };
 });
 

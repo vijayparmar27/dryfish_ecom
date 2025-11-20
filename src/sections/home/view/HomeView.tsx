@@ -7,8 +7,10 @@ import Button from "@mui/material/Button";
 import AppWelcome from "../app-welcome";
 import { SeoIllustration } from "@/assets/illustrations";
 import { _ecommerceNewProducts } from "@/_mock/_overview";
+import { _products } from "@/_mock";
 import { Carousel } from "@/components/carousel/carousel";
 import { carouselItems } from "@/_mock";
+import { HomeProducts } from "../home-products";
 
 const HomeView = () => {
   return (
@@ -38,6 +40,10 @@ const HomeView = () => {
             autoPlay
             autoPlayInterval={5000}
           />
+        </Grid>
+
+        <Grid size={{ xs: 12 }}>
+          <HomeProducts products={_products} />
         </Grid>
       </Grid>
     </DashboardContent>
