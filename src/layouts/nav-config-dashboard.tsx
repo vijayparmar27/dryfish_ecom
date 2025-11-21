@@ -1,10 +1,11 @@
 import { Label } from "@/components/label";
 import { SvgColor } from "@/components/svg-color";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 // ----------------------------------------------------------------------
 
 const icon = (name: string) => (
-  <SvgColor src={`/assets/icons/navbar/${name}.svg`} />
+  <SvgColor src={getAssetPath(`/assets/icons/navbar/${name}.svg`)} />
 );
 
 export type NavItem = {

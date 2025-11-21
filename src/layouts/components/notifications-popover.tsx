@@ -22,6 +22,7 @@ import { fToNow } from "@/utils/format-time";
 
 import { Iconify } from "@/components/iconify";
 import { Scrollbar } from "@/components/scrollbar";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 // ----------------------------------------------------------------------
 
@@ -252,7 +253,9 @@ function renderContent(notification: NotificationItemProps) {
       avatarUrl: (
         <img
           alt={notification.title}
-          src="/assets/icons/notification/ic-notification-package.svg"
+          src={getAssetPath(
+            "/assets/icons/notification/ic-notification-package.svg"
+          )}
         />
       ),
       title,
@@ -263,7 +266,9 @@ function renderContent(notification: NotificationItemProps) {
       avatarUrl: (
         <img
           alt={notification.title}
-          src="/assets/icons/notification/ic-notification-shipping.svg"
+          src={getAssetPath(
+            "/assets/icons/notification/ic-notification-shipping.svg"
+          )}
         />
       ),
       title,
@@ -274,7 +279,9 @@ function renderContent(notification: NotificationItemProps) {
       avatarUrl: (
         <img
           alt={notification.title}
-          src="/assets/icons/notification/ic-notification-mail.svg"
+          src={getAssetPath(
+            "/assets/icons/notification/ic-notification-mail.svg"
+          )}
         />
       ),
       title,
@@ -285,7 +292,9 @@ function renderContent(notification: NotificationItemProps) {
       avatarUrl: (
         <img
           alt={notification.title}
-          src="/assets/icons/notification/ic-notification-chat.svg"
+          src={getAssetPath(
+            "/assets/icons/notification/ic-notification-chat.svg"
+          )}
         />
       ),
       title,

@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 //
 import { getRatio } from "./utils";
 import { ImageProps } from "./types";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 // ----------------------------------------------------------------------
 
@@ -69,7 +70,9 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
         useIntersectionObserver={useIntersectionObserver}
         wrapperClassName={wrapperClassName || "component-image-wrapper"}
         placeholderSrc={
-          disabledEffect ? "/assets/transparent.png" : "/assets/placeholder.svg"
+          disabledEffect
+            ? getAssetPath("/assets/transparent.png")
+            : getAssetPath("/assets/placeholder.svg")
         }
         //
         sx={{

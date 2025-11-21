@@ -26,6 +26,7 @@ import {
   _taskNames,
   _tourNames,
 } from "./assets";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 export const _mock = {
   id: (index: number) => _id[index],
@@ -61,7 +62,8 @@ export const _mock = {
   },
   // Image
   image: {
-    cover: (index: number) => `/assets/images/cover/cover_${index + 1}.jpg`,
+    cover: (index: number) =>
+      getAssetPath(`/assets/images/cover/cover_${index + 1}.jpg`),
     avatar: (index: number) =>
       `${ASSETS_API}/assets/images/avatar/avatar_${index + 1}.jpg`,
     travel: (index: number) =>
@@ -69,7 +71,7 @@ export const _mock = {
     company: (index: number) =>
       `${ASSETS_API}/assets/images/company/company_${index + 1}.png`,
     product: (index: number) =>
-      `/assets/images/product/product-${index + 1}.webp`,
+      getAssetPath(`/assets/images/product/product-${index + 1}.webp`),
     portrait: (index: number) =>
       `${ASSETS_API}/assets/images/portrait/portrait_${index + 1}.jpg`,
   },

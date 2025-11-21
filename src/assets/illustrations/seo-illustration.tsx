@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import Box, { BoxProps } from "@mui/material/Box";
 //
 import BackgroundShape from "./background-shape";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 // ----------------------------------------------------------------------
 
@@ -235,7 +236,7 @@ function SeoIllustration({ ...other }: BoxProps) {
       </defs>
 
       <image
-        href="/assets/illustrations/characters/character_3.png"
+        href={getAssetPath("/assets/illustrations/characters/character_3.png")}
         height="300"
         x="312"
         y="30"

@@ -1,18 +1,19 @@
-import type { CardProps } from '@mui/material/Card';
-import type { PaletteColorKey } from '@/theme/core';
-import type { ChartOptions } from '@/components/chart';
+import type { CardProps } from "@mui/material/Card";
+import type { PaletteColorKey } from "@/theme/core";
+import type { ChartOptions } from "@/components/chart";
 
-import { varAlpha } from 'minimal-shared/utils';
+import { varAlpha } from "minimal-shared/utils";
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import { useTheme } from "@mui/material/styles";
 
-import { fNumber, fPercent, fShortenNumber } from '@/utils/format-number';
+import { fNumber, fPercent, fShortenNumber } from "@/utils/format-number";
 
-import { Iconify } from '@/components/iconify';
-import { SvgColor } from '@/components/svg-color';
-import { Chart, useChart } from '@/components/chart';
+import { Iconify } from "@/components/iconify";
+import { SvgColor } from "@/components/svg-color";
+import { Chart, useChart } from "@/components/chart";
+import { getAssetPath } from "@/utils/get-asset-path";
 
 // ----------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ export function AnalyticsWidgetSummary({
   total,
   chart,
   percent,
-  color = 'primary',
+  color = "primary",
   ...other
 }: Props) {
   const theme = useTheme();
@@ -56,7 +57,10 @@ export function AnalyticsWidgetSummary({
       },
     },
     tooltip: {
-      y: { formatter: (value: number) => fNumber(value), title: { formatter: () => '' } },
+      y: {
+        formatter: (value: number) => fNumber(value),
+        title: { formatter: () => "" },
+      },
     },
     markers: {
       strokeWidth: 0,
@@ -70,14 +74,17 @@ export function AnalyticsWidgetSummary({
         top: 16,
         gap: 0.5,
         right: 16,
-        display: 'flex',
-        position: 'absolute',
-        alignItems: 'center',
+        display: "flex",
+        position: "absolute",
+        alignItems: "center",
       }}
     >
-      <Iconify width={20} icon={percent < 0 ? 'eva:trending-down-fill' : 'eva:trending-up-fill'} />
-      <Box component="span" sx={{ typography: 'subtitle2' }}>
-        {percent > 0 && '+'}
+      <Iconify
+        width={20}
+        icon={percent < 0 ? "eva:trending-down-fill" : "eva:trending-up-fill"}
+      />
+      <Box component="span" sx={{ typography: "subtitle2" }}>
+        {percent > 0 && "+"}
         {fPercent(percent)}
       </Box>
     </Box>
@@ -88,11 +95,14 @@ export function AnalyticsWidgetSummary({
       sx={[
         () => ({
           p: 3,
-          boxShadow: 'none',
-          position: 'relative',
+          boxShadow: "none",
+          position: "relative",
           color: `${color}.darker`,
-          backgroundColor: 'common.white',
-          backgroundImage: `linear-gradient(135deg, ${varAlpha(theme.vars.palette[color].lighterChannel, 0.48)}, ${varAlpha(theme.vars.palette[color].lightChannel, 0.48)})`,
+          backgroundColor: "common.white",
+          backgroundImage: `linear-gradient(135deg, ${varAlpha(
+            theme.vars.palette[color].lighterChannel,
+            0.48
+          )}, ${varAlpha(theme.vars.palette[color].lightChannel, 0.48)})`,
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
@@ -104,16 +114,16 @@ export function AnalyticsWidgetSummary({
 
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'flex-end',
-          justifyContent: 'flex-end',
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
         }}
       >
         <Box sx={{ flexGrow: 1, minWidth: 112 }}>
-          <Box sx={{ mb: 1, typography: 'subtitle2' }}>{title}</Box>
+          <Box sx={{ mb: 1, typography: "subtitle2" }}>{title}</Box>
 
-          <Box sx={{ typography: 'h4' }}>{fShortenNumber(total)}</Box>
+          <Box sx={{ typography: "h4" }}>{fShortenNumber(total)}</Box>
         </Box>
 
         <Chart
@@ -125,7 +135,7 @@ export function AnalyticsWidgetSummary({
       </Box>
 
       <SvgColor
-        src="/assets/background/shape-square.svg"
+        src={getAssetPath("/assets/background/shape-square.svg")}
         sx={{
           top: 0,
           left: -20,
@@ -133,7 +143,7 @@ export function AnalyticsWidgetSummary({
           zIndex: -1,
           height: 240,
           opacity: 0.24,
-          position: 'absolute',
+          position: "absolute",
           color: `${color}.main`,
         }}
       />
