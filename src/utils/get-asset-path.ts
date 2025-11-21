@@ -7,7 +7,7 @@ export function getAssetPath(path: string): string {
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
   // In Next.js, process.env.NEXT_PUBLIC_BASE_PATH is available
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "/dryfish_ecom";
 
   return `${basePath}/${cleanPath}`;
 }
