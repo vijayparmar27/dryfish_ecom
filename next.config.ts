@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: "export",
+  // Uncomment and set this if deploying to a subdirectory (e.g., /dryfish)
+  basePath: "/dryfish_ecom",
+  // Recommended for static exports
+  trailingSlash: true,
 };
 
 export default nextConfig;
