@@ -33,6 +33,7 @@ export type NavContentProps = {
   };
   workspaces: WorkspacesPopoverProps["data"];
   sx?: SxProps<Theme>;
+  isMobile?: boolean;
 };
 
 export function NavDesktop({
@@ -105,14 +106,19 @@ export function NavMobile({
         },
       }}
     >
-      <NavContent data={data} slots={slots} workspaces={workspaces} />
+      <NavContent
+        data={data}
+        slots={slots}
+        workspaces={workspaces}
+        isMobile={true}
+      />
     </Drawer>
   );
 }
 
 // ----------------------------------------------------------------------
 
-export function NavContent({ data, slots, sx }: NavContentProps) {
+export function NavContent({ data, slots, sx, isMobile }: NavContentProps) {
   const pathname = usePathname();
 
   return (
@@ -130,7 +136,7 @@ export function NavContent({ data, slots, sx }: NavContentProps) {
             {
               display: "flex",
               flex: "1 1 auto",
-              flexDirection: "row",
+              flexDirection: `${isMobile ? "column" : "row"}`,
             },
             ...(Array.isArray(sx) ? sx : [sx]),
           ]}
@@ -140,7 +146,7 @@ export function NavContent({ data, slots, sx }: NavContentProps) {
             sx={{
               gap: 0.5,
               display: "flex",
-              flexDirection: "row",
+              flexDirection: `${isMobile ? "column" : "row"}`,
             }}
           >
             {data.map((item) => {
