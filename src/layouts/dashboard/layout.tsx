@@ -35,7 +35,7 @@ import type { LayoutSectionProps } from "../core/layout-section";
 type LayoutBaseProps = Pick<LayoutSectionProps, "sx" | "children" | "cssVars">;
 
 export type DashboardLayoutProps = LayoutBaseProps & {
-  layoutQuery?: Breakpoint;
+  layoutQuery?: Breakpoint | number;
   slotProps?: {
     header?: HeaderSectionProps;
     main?: MainSectionProps;
@@ -47,7 +47,7 @@ export function DashboardLayout({
   cssVars,
   children,
   slotProps,
-  layoutQuery = "lg",
+  layoutQuery = "md",
 }: DashboardLayoutProps) {
   const theme = useTheme();
 
@@ -89,7 +89,13 @@ export function DashboardLayout({
           <NavContent
             data={navData}
             workspaces={_workspaces}
-            sx={{ flexGrow: 1, gap: 14, px: 2 }}
+            sx={{
+              flexGrow: 1,
+              gap: 14,
+              px: 2,
+              display: "none",
+              [theme.breakpoints.up(layoutQuery)]: { display: "flex" },
+            }}
           />
         </>
       ),
