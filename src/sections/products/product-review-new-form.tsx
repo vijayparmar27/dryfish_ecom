@@ -44,7 +44,7 @@ export default function ProductReviewNewForm({ onClose, ...other }: Props) {
   };
 
   const methods = useForm<FormValuesProps>({
-    resolver: yupResolver(ReviewSchema),
+    resolver: yupResolver(ReviewSchema) as any,
     defaultValues,
   });
 

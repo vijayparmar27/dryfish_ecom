@@ -1,8 +1,8 @@
 // @mui
-import Stack from '@mui/material/Stack';
-import Skeleton from '@mui/material/Skeleton';
-import Paper, { PaperProps } from '@mui/material/Paper';
-import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
+import Stack from "@mui/material/Stack";
+import Skeleton from "@mui/material/Skeleton";
+import Paper, { PaperProps } from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 
 // ----------------------------------------------------------------------
 
@@ -17,12 +17,16 @@ export function ProductItemSkeleton({ sx, ...other }: PaperProps) {
       {...other}
     >
       <Stack sx={{ p: 1 }}>
-        <Skeleton sx={{ paddingTop: '100%' }} />
+        <Skeleton sx={{ paddingTop: "100%" }} />
       </Stack>
 
       <Stack spacing={2} sx={{ p: 3, pt: 2 }}>
         <Skeleton sx={{ width: 0.5, height: 16 }} />
-        <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Stack direction="row">
             <Skeleton variant="circular" sx={{ width: 16, height: 16 }} />
             <Skeleton variant="circular" sx={{ width: 16, height: 16 }} />
@@ -37,14 +41,21 @@ export function ProductItemSkeleton({ sx, ...other }: PaperProps) {
 
 // ----------------------------------------------------------------------
 
-export function ProductDetailsSkeleton({ ...other }: Grid2Props) {
+export function ProductDetailsSkeleton({ ...other }: PaperProps) {
   return (
-    <Grid container spacing={8} {...other}>
-      <Grid xs={12} md={6} lg={7}>
-        <Skeleton sx={{ paddingTop: '100%' }} />
-      </Grid>
+    <Box
+      sx={{
+        display: "grid",
+        gap: 8,
+        gridTemplateColumns: { xs: "repeat(1, 1fr)", md: "repeat(12, 1fr)" },
+      }}
+      {...other}
+    >
+      <Box sx={{ gridColumn: { xs: "span 1", md: "span 6", lg: "span 7" } }}>
+        <Skeleton sx={{ paddingTop: "100%" }} />
+      </Box>
 
-      <Grid xs={12} md={6} lg={5}>
+      <Box sx={{ gridColumn: { xs: "span 1", md: "span 6", lg: "span 5" } }}>
         <Stack spacing={3}>
           <Skeleton variant="circular" sx={{ width: 80, height: 80 }} />
           <Skeleton sx={{ height: 240 }} />
@@ -52,9 +63,9 @@ export function ProductDetailsSkeleton({ ...other }: Grid2Props) {
           <Skeleton sx={{ height: 16, width: 0.75 }} />
           <Skeleton sx={{ height: 16, width: 0.5 }} />
         </Stack>
-      </Grid>
+      </Box>
 
-      <Grid xs={12}>
+      <Box sx={{ gridColumn: "1 / -1" }}>
         <Stack direction="row" alignItems="center">
           {[...Array(3)].map((_, index) => (
             <Stack
@@ -70,7 +81,7 @@ export function ProductDetailsSkeleton({ ...other }: Grid2Props) {
             </Stack>
           ))}
         </Stack>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 }

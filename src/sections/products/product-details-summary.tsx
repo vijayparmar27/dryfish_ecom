@@ -201,9 +201,9 @@ export default function ProductDetailsSummary({
         control={control}
         render={({ field }) => (
           <ColorPicker
-            colors={colors}
-            selected={field.value}
-            onSelectColor={field.onChange}
+            options={colors}
+            value={field.value}
+            onChange={field.onChange}
             limit={4}
           />
         )}

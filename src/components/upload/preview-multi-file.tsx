@@ -1,7 +1,7 @@
 import { m, AnimatePresence } from "framer-motion";
 // @mui
 import { alpha } from "@mui/material/styles";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import ListItemText from "@mui/material/ListItemText";
 // utils
@@ -30,91 +30,95 @@ export default function MultiFilePreview({
 
         if (thumbnail) {
           return (
-            <Stack
+            <m.div
               key={key}
-              component={m.div}
-              {...varFade().inUp}
-              alignItems="center"
-              display="inline-flex"
-              justifyContent="center"
-              sx={{
-                m: 0.5,
-                width: 80,
-                height: 80,
-                borderRadius: 1.25,
-                overflow: "hidden",
-                position: "relative",
-                border: (theme) =>
-                  `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
-                ...sx,
-              }}
+              {...(varFade().inUp as any)}
+              style={{ display: "inline-flex" }}
             >
-              <FileThumbnail
-                tooltip
-                imageView
-                file={file}
-                sx={{ position: "absolute" }}
-                imgSx={{ position: "absolute" }}
-              />
+              <Box
+                sx={{
+                  m: 0.5,
+                  width: 80,
+                  height: 80,
+                  borderRadius: 1.25,
+                  overflow: "hidden",
+                  position: "relative",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: (theme) =>
+                    `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
+                  ...sx,
+                }}
+              >
+                <FileThumbnail
+                  tooltip
+                  imageView
+                  file={file}
+                  sx={{ position: "absolute" }}
+                  imgSx={{ position: "absolute" }}
+                />
 
-              {onRemove && (
-                <IconButton
-                  size="small"
-                  onClick={() => onRemove(file)}
-                  sx={{
-                    p: 0.5,
-                    top: 4,
-                    right: 4,
-                    position: "absolute",
-                    color: "common.white",
-                    bgcolor: (theme) => alpha(theme.palette.grey[900], 0.48),
-                    "&:hover": {
-                      bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
-                    },
-                  }}
-                >
-                  <Iconify icon="mingcute:close-line" width={14} />
-                </IconButton>
-              )}
-            </Stack>
+                {onRemove && (
+                  <IconButton
+                    size="small"
+                    onClick={() => onRemove(file)}
+                    sx={{
+                      p: 0.5,
+                      top: 4,
+                      right: 4,
+                      position: "absolute",
+                      color: "common.white",
+                      bgcolor: (theme) => alpha(theme.palette.grey[900], 0.48),
+                      "&:hover": {
+                        bgcolor: (theme) =>
+                          alpha(theme.palette.grey[900], 0.72),
+                      },
+                    }}
+                  >
+                    <Iconify icon="mingcute:close-line" width={14} />
+                  </IconButton>
+                )}
+              </Box>
+            </m.div>
           );
         }
 
         return (
-          <Stack
-            key={key}
-            component={m.div}
-            {...varFade().inUp}
-            spacing={2}
-            direction="row"
-            alignItems="center"
-            sx={{
-              my: 1,
-              py: 1,
-              px: 1.5,
-              borderRadius: 1,
-              border: (theme) =>
-                `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
-              ...sx,
-            }}
-          >
-            <FileThumbnail file={file} />
-
-            <ListItemText
-              primary={isNotFormatFile ? file : name}
-              secondary={isNotFormatFile ? "" : fData(size)}
-              secondaryTypographyProps={{
-                component: "span",
-                typography: "caption",
+          <m.div key={key} {...(varFade().inUp as any)}>
+            <Box
+              sx={{
+                my: 1,
+                py: 1,
+                px: 1.5,
+                borderRadius: 1,
+                border: (theme) =>
+                  `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 2,
+                ...sx,
               }}
-            />
+            >
+              <FileThumbnail file={file} />
 
-            {onRemove && (
-              <IconButton size="small" onClick={() => onRemove(file)}>
-                <Iconify icon="mingcute:close-line" width={16} />
-              </IconButton>
-            )}
-          </Stack>
+              <ListItemText
+                primary={isNotFormatFile ? file : name}
+                secondary={isNotFormatFile ? "" : fData(size)}
+                secondaryTypographyProps={{
+                  component: "span",
+                  typography: "caption",
+                }}
+              />
+
+              {onRemove && (
+                <IconButton size="small" onClick={() => onRemove(file)}>
+                  <Iconify icon="mingcute:close-line" width={16} />
+                </IconButton>
+              )}
+            </Box>
+          </m.div>
         );
       })}
     </AnimatePresence>
