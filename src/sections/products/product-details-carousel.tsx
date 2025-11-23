@@ -76,11 +76,9 @@ export default function ProductDetailsCarousel({ product }: Props) {
 
   // console.log("product :: images : ", product.images);
 
-  const slides = product.images.map((_, index) => ({
-    src: `/dryfish_ecom/assets/images/m_product/product_${index + 1}.jpg`,
+  const slides = product.images.map((src) => ({
+    src: src,
   }));
-
-  console.log("slides :: ", slides);
 
   const lightbox = useLightBox(slides);
 
