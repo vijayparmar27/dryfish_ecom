@@ -80,13 +80,27 @@ export default function ProductDetailsCarousel({ product }: Props) {
 
   const lightbox = useLightBox(slides);
 
-  const carouselLarge = useCarousel({
+  const {
+    carouselRef: largeRef,
+    currentIndex: largeIndex,
+    nav: largeNav,
+    onSetNav: onSetLargeNav,
+    onTogo: onTogoLarge,
+    carouselSettings: largeSettings,
+  } = useCarousel({
     rtl: false,
     draggable: false,
     adaptiveHeight: true,
   });
 
-  const carouselThumb = useCarousel({
+  const {
+    carouselRef: thumbRef,
+    nav: thumbNav,
+    onSetNav: onSetThumbNav,
+    onNext: onNextThumb,
+    onPrev: onPrevThumb,
+    carouselSettings: thumbSettings,
+  } = useCarousel({
     rtl: false,
     centerMode: true,
     swipeToSlide: true,
@@ -97,15 +111,15 @@ export default function ProductDetailsCarousel({ product }: Props) {
   });
 
   useEffect(() => {
-    carouselLarge.onSetNav();
-    carouselThumb.onSetNav();
-  }, [carouselLarge, carouselThumb]);
+    onSetLargeNav();
+    onSetThumbNav();
+  }, [onSetLargeNav, onSetThumbNav]);
 
   useEffect(() => {
     if (lightbox.open) {
-      carouselLarge.onTogo(lightbox.selected);
+      onTogoLarge(lightbox.selected);
     }
-  }, [carouselLarge, lightbox.open, lightbox.selected]);
+  }, [onTogoLarge, lightbox.open, lightbox.selected]);
 
   const renderLargeImg = (
     <Box
@@ -116,11 +130,7 @@ export default function ProductDetailsCarousel({ product }: Props) {
         position: "relative",
       }}
     >
-      <Carousel
-        {...carouselLarge.carouselSettings}
-        asNavFor={carouselThumb.nav}
-        ref={carouselLarge.carouselRef}
-      >
+      <Carousel {...largeSettings} asNavFor={thumbNav} ref={largeRef}>
         {slides.map((slide) => (
           <Image
             key={slide.src}
@@ -134,21 +144,17 @@ export default function ProductDetailsCarousel({ product }: Props) {
       </Carousel>
 
       <CarouselArrowIndex
-        index={carouselLarge.currentIndex}
+        index={largeIndex}
         total={slides.length}
-        onNext={carouselThumb.onNext}
-        onPrev={carouselThumb.onPrev}
+        onNext={onNextThumb}
+        onPrev={onPrevThumb}
       />
     </Box>
   );
 
   const renderThumbnails = (
     <StyledThumbnailsContainer length={slides.length}>
-      <Carousel
-        {...carouselThumb.carouselSettings}
-        asNavFor={carouselLarge.nav}
-        ref={carouselThumb.carouselRef}
-      >
+      <Carousel {...thumbSettings} asNavFor={largeNav} ref={thumbRef}>
         {slides.map((item, index) => (
           <Box key={item.src} sx={{ px: 0.5 }}>
             <Avatar
@@ -161,7 +167,7 @@ export default function ProductDetailsCarousel({ product }: Props) {
                 height: THUMB_SIZE,
                 opacity: 0.48,
                 cursor: "pointer",
-                ...(carouselLarge.currentIndex === index && {
+                ...(largeIndex === index && {
                   opacity: 1,
                   border: `solid 2.5px ${theme.palette.primary.main}`,
                 }),

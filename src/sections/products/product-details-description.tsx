@@ -10,7 +10,6 @@ type Props = {
 export default function ProductDetailsDescription({ description }: Props) {
   return (
     <Markdown
-      children={description}
       sx={{
         p: 3,
         "& p, li, ol": {
@@ -28,6 +27,8 @@ export default function ProductDetailsDescription({ description }: Props) {
           },
         },
       }}
-    />
+    >
+      {description}
+    </Markdown>
   );
 }

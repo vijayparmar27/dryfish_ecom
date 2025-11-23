@@ -44,6 +44,7 @@ export default function ProductReviewNewForm({ onClose, ...other }: Props) {
   };
 
   const methods = useForm<FormValuesProps>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: yupResolver(ReviewSchema) as any,
     defaultValues,
   });

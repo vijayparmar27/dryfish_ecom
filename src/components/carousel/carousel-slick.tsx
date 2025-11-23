@@ -1,5 +1,5 @@
 import Slider, { Settings } from "react-slick";
-import { styled } from "@mui/material/styles";
+
 import Box, { BoxProps } from "@mui/material/Box";
 import { forwardRef } from "react";
 
@@ -10,7 +10,7 @@ export interface CarouselProps extends BoxProps {
   settings?: Settings;
 }
 
-const Carousel = forwardRef<any, CarouselProps & Settings>(
+const Carousel = forwardRef<Slider, CarouselProps & Settings>(
   ({ children, sx, ...other }, ref) => {
     return (
       <Box sx={{ overflow: "hidden", ...sx }}>
@@ -21,5 +21,7 @@ const Carousel = forwardRef<any, CarouselProps & Settings>(
     );
   }
 );
+
+Carousel.displayName = "Carousel";
 
 export default Carousel;

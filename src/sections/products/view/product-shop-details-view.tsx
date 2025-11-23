@@ -79,6 +79,8 @@ export default function ProductShopDetailsView() {
   const { product, checkout, onAddCart, onGotoStep, productStatus } =
     useProduct();
 
+  console.log(product);
+
   const [currentTab, setCurrentTab] = useState("description");
 
   const handleChangeTab = useCallback(
