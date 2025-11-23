@@ -9,6 +9,9 @@ import { fCurrency } from "@/utils/format-number";
 import { Label } from "@/components/label";
 import { ColorPreview } from "@/components/color-utils";
 
+import { paths } from "@/routes/paths";
+import { RouterLink } from "@/routes/components";
+
 // ----------------------------------------------------------------------
 
 export type ProductItemProps = {
@@ -40,17 +43,23 @@ export function ProductItem({ product }: { product: ProductItemProps }) {
 
   const renderImg = (
     <Box
-      component="img"
-      alt={product.name}
-      src={product.coverUrl}
-      sx={{
-        top: 0,
-        width: 1,
-        height: 1,
-        objectFit: "cover",
-        position: "absolute",
-      }}
-    />
+      component={RouterLink}
+      href={paths.product.details(product.id)}
+      color="inherit"
+    >
+      <Box
+        component="img"
+        alt={product.name}
+        src={product.coverUrl}
+        sx={{
+          top: 0,
+          width: 1,
+          height: 1,
+          objectFit: "cover",
+          position: "absolute",
+        }}
+      />
+    </Box>
   );
 
   const renderPrice = (
@@ -78,7 +87,14 @@ export function ProductItem({ product }: { product: ProductItemProps }) {
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link color="inherit" underline="hover" variant="subtitle2" noWrap>
+        <Link
+          component={RouterLink}
+          href={paths.product.details(product.id)}
+          color="inherit"
+          underline="hover"
+          variant="subtitle2"
+          noWrap
+        >
           {product.name}
         </Link>
 
