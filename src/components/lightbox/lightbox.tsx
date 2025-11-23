@@ -5,6 +5,9 @@ import Captions from "yet-another-react-lightbox/plugins/captions";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import "yet-another-react-lightbox/plugins/captions.css";
 // @mui
 import Box from "@mui/material/Box";
 //

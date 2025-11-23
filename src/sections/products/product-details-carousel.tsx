@@ -139,6 +139,8 @@ export default function ProductDetailsCarousel({ product }: Props) {
             alt={slide.src}
             src={slide.src}
             ratio="1/1"
+            disabledEffect
+            overlay="transparent"
             onClick={() => lightbox.onOpen(slide.src)}
             sx={{ cursor: "zoom-in" }}
           />
