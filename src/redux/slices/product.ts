@@ -33,14 +33,14 @@ const product = {
   ],
   inventoryType: "low stock",
   images: [
-    "/dryfish_ecom/assets/images/m_product/product_1.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_2.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_3.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_4.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_5.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_6.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_7.jpg",
-    "/dryfish_ecom/assets/images/m_product/product_8.jpg",
+    "/dryfish_ecom/assets/images/product/product-1.webp",
+    "/dryfish_ecom/assets/images/product/product-2.webp",
+    "/dryfish_ecom/assets/images/product/product-3.webp",
+    "/dryfish_ecom/assets/images/product/product-4.webp",
+    "/dryfish_ecom/assets/images/product/product-5.webp",
+    "/dryfish_ecom/assets/images/product/product-6.webp",
+    "/dryfish_ecom/assets/images/product/product-7.webp",
+    "/dryfish_ecom/assets/images/product/product-8.webp",
   ],
   ratings: [
     {
