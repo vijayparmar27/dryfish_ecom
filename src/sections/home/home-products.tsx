@@ -1,13 +1,14 @@
+import React, { useState, useCallback } from "react";
+import { alpha } from "@mui/material/styles";
 
-import React, { useState, useCallback } from 'react';
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Grid from "@mui/material/Grid";
 
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import Grid from '@mui/material/Grid';
-
-import { ProductItem } from '@/sections/products/product-item';
-import type { ProductItemProps } from '@/sections/products/product-item';
+import { Iconify } from "@/components/iconify";
+import { ProductItem } from "@/sections/products/product-item";
+import type { ProductItemProps } from "@/sections/products/product-item";
 
 // ----------------------------------------------------------------------
 
@@ -16,21 +17,28 @@ type Props = {
 };
 
 export function HomeProducts({ products }: Props) {
-  const [currentTab, setCurrentTab] = useState('all');
+  const [currentTab, setCurrentTab] = useState("all");
 
-  const handleChangeTab = useCallback((event: React.SyntheticEvent, newValue: string) => {
-    setCurrentTab(newValue);
-  }, []);
+  const handleChangeTab = useCallback(
+    (event: React.SyntheticEvent, newValue: string) => {
+      setCurrentTab(newValue);
+    },
+    []
+  );
 
   const TABS = [
-    { value: 'all', label: 'All' },
-    { value: 'shose', label: 'Shoes' },
-    { value: 'apparel', label: 'Apparel' },
-    { value: 'accessories', label: 'Accessories' },
+    { value: "all", label: "All", icon: "solar:home-2-bold-duotone" },
+    { value: "shose", label: "Shoes", icon: "solar:sneakers-bold-duotone" },
+    { value: "apparel", label: "Apparel", icon: "solar:t-shirt-bold-duotone" },
+    {
+      value: "accessories",
+      label: "Accessories",
+      icon: "solar:glasses-bold-duotone",
+    },
   ];
 
   const filteredProducts = products.filter((product) => {
-    if (currentTab === 'all') {
+    if (currentTab === "all") {
       return true;
     }
     return product.category === currentTab;
@@ -41,15 +49,46 @@ export function HomeProducts({ products }: Props) {
       <Tabs
         value={currentTab}
         onChange={handleChangeTab}
+        variant="scrollable"
+        scrollButtons="auto"
+        allowScrollButtonsMobile
         sx={{
-          mb: 3,
-          '& .MuiTabs-indicator': {
-            backgroundColor: 'primary.main',
+          mb: 5,
+          "& .MuiTabs-indicator": {
+            display: "none",
+          },
+          "& .MuiTabs-flexContainer": {
+            gap: 2,
           },
         }}
       >
         {TABS.map((tab) => (
-          <Tab key={tab.value} value={tab.value} label={tab.label} />
+          <Tab
+            key={tab.value}
+            value={tab.value}
+            icon={<Iconify icon={tab.icon} width={24} />}
+            label={tab.label}
+            iconPosition="start"
+            sx={{
+              borderRadius: 1,
+              px: 3,
+              py: 1,
+              minHeight: 48,
+              fontWeight: "fontWeightSemiBold",
+              color: "text.secondary",
+              bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
+              "&.Mui-selected": {
+                color: "common.white",
+                bgcolor: "primary.main",
+                "&:hover": {
+                  bgcolor: "primary.dark",
+                },
+              },
+              "&:hover": {
+                bgcolor: (theme) => alpha(theme.palette.grey[500], 0.16),
+              },
+            }}
+          />
         ))}
       </Tabs>
 
