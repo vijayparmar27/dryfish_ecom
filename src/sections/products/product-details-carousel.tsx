@@ -74,9 +74,13 @@ type Props = {
 export default function ProductDetailsCarousel({ product }: Props) {
   const theme = useTheme();
 
-  const slides = product.images.map((img) => ({
-    src: img,
+  // console.log("product :: images : ", product.images);
+
+  const slides = product.images.map((_, index) => ({
+    src: `/dryfish_ecom/assets/images/m_product/product_${index + 1}.jpg`,
   }));
+
+  console.log("slides :: ", slides);
 
   const lightbox = useLightBox(slides);
 

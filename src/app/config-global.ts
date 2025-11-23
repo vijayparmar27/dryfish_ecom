@@ -31,7 +31,10 @@ export const CONFIG: ConfigValue = {
 // API
 // ----------------------------------------------------------------------
 
-export const HOST_API = process.env.NEXT_PUBLIC_HOST_API;
+export const PRODUCT_ID = "e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1";
+
+export const HOST_API =
+  process.env.NEXT_PUBLIC_HOST_API ?? "http://localhost:3001";
 export const ASSETS_API =
   process.env.NEXT_PUBLIC_ASSETS_API ?? process.env.NEXT_PUBLIC_BASE_PATH;
 
