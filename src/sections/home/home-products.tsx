@@ -52,15 +52,19 @@ export function HomeProducts({ products }: Props) {
         variant="scrollable"
         scrollButtons="auto"
         allowScrollButtonsMobile
-        sx={{
+        sx={(theme) => ({
           mb: 5,
           "& .MuiTabs-indicator": {
             display: "none",
           },
           "& .MuiTabs-flexContainer": {
             gap: 2,
+            justifyContent: "flex-start",
+            [theme.breakpoints.up("md")]: {
+              justifyContent: "center",
+            },
           },
-        }}
+        })}
       >
         {TABS.map((tab) => (
           <Tab
