@@ -32,8 +32,18 @@ export const navData = [
     ),
   },
   {
+    title: "Bulk Order Request",
+    path: "/contact",
+    icon: icon("checklist"),
+  },
+  {
     title: "Blog",
     path: "/blogs",
     icon: icon("ic-blog"),
+  },
+  {
+    title: "About us",
+    path: "/about",
+    icon: icon("id-card"),
   },
 ];

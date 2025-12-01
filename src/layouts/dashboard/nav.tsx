@@ -190,9 +190,17 @@ export function NavContent({ data, slots, sx, isMobile }: NavContentProps) {
                       {item.icon}
                     </Box>
 
+                    <div className="space-x-0.5">
+                      {item.title.split(" ").map((word, index) => (
+                        <Box component="span" key={index} sx={{ flexGrow: 1 }}>
+                          {word}
+                        </Box>
+                      ))}
+                    </div>
+                    {/* 
                     <Box component="span" sx={{ flexGrow: 1 }}>
                       {item.title}
-                    </Box>
+                    </Box> */}
 
                     {item.info && item.info}
                   </ListItemButton>
