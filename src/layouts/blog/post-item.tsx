@@ -4,7 +4,6 @@ import type { IconifyName } from "@/components/iconify";
 import { varAlpha } from "minimal-shared/utils";
 
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
@@ -15,6 +14,9 @@ import { fShortenNumber } from "@/utils/format-number";
 import { Iconify } from "@/components/iconify";
 import { SvgColor } from "@/components/svg-color";
 import { getAssetPath } from "@/utils/get-asset-path";
+
+import { paths } from "@/routes/paths";
+import { RouterLink } from "@/routes/components";
 
 // ----------------------------------------------------------------------
 
@@ -62,10 +64,8 @@ export function PostItem({
   );
 
   const renderTitle = (
-    <Link
-      color="inherit"
+    <Typography
       variant="subtitle2"
-      underline="hover"
       sx={{
         height: 44,
         overflow: "hidden",
@@ -79,7 +79,7 @@ export function PostItem({
       }}
     >
       {post.title}
-    </Link>
+    </Typography>
   );
 
   const renderInfo = (
@@ -170,7 +170,12 @@ export function PostItem({
   );
 
   return (
-    <Card sx={sx} {...other}>
+    <Card
+      component={RouterLink}
+      href={paths.post.details(post.id)}
+      sx={sx}
+      {...other}
+    >
       <Box
         sx={(theme) => ({
           position: "relative",
